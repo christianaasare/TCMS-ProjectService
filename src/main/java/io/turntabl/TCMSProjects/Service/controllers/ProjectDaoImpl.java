@@ -22,6 +22,7 @@ public class ProjectDaoImpl implements ProjectDao {
 
 
     @ApiOperation("Get All Projects")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/projects")
     @Override
     public List<ProjectTO> getAllProjects() {
@@ -29,6 +30,7 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @ApiOperation("Search Project By Type")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/projects/search/{type}")
     @Override
     public List<ProjectTO> getProjectByType(String projectType) {
@@ -38,6 +40,7 @@ public class ProjectDaoImpl implements ProjectDao {
         }
 
     @ApiOperation("Add a new project")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/projects/addNewProject")
     @Override
     public void addProject(ProjectTO project) {
@@ -45,7 +48,9 @@ public class ProjectDaoImpl implements ProjectDao {
                     "insert into projects(type, description) values(?,?)",
                     project.getType(), project.getDescription());
     }
+    
     @ApiOperation("Delete a project")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("/projects/deleteAProject/{id}")
     @Override
     public void deleteProject(Integer projectID) {
@@ -53,6 +58,7 @@ public class ProjectDaoImpl implements ProjectDao {
     }
 
     @ApiOperation("Update a project")
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("/projects/updateProject/{id}")
     @Override
     public void updateProject(Integer projectID, ProjectTO project) {
